@@ -1,3 +1,6 @@
+const { MessageEmbed } = require('discord.js');
+const User = require('../models/User'); // Mô hình người dùng
+
 module.exports = {
   name: 'listdnt',
   description: 'Hiển thị top 10 người dùng donate nhiều nhất.',
@@ -13,11 +16,15 @@ module.exports = {
       return message.reply('Không có ai trong top donate.');
     }
 
-    let reply = 'Top 10 người dùng donate nhiều nhất:\n';
+    // Tạo embed để hiển thị danh sách top 10 người dùng donate
+    const embed = new MessageEmbed()
+      .setColor('#FF0000')
+      .setTitle('Top 10 Người Dùng Donate Nhiều Nhất');
+
     topDonators.forEach((user, index) => {
-      reply += `${index + 1}. ${user.userId} - ${user.points} điểm\n`;
+      embed.addField(`${index + 1}. Người dùng ${user.userId}`, `${user.points} điểm`);
     });
 
-    message.channel.send(reply);
+    message.channel.send({ embeds: [embed] });
   }
 };
