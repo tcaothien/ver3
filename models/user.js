@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  userId: String,
-  lastUsed: Number, // Thời gian sử dụng lệnh tarot gần nhất
-  points: { type: Number, default: 0 }, // Điểm người dùng
+  userId: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  points: {
+    type: Number,
+    default: 0,
+  },
+  lastTarotTime: {
+    type: Date,
+    default: null,
+  },
 });
 
-module.exports = mongoose.model('User', userSchema);
-
+const User = mongoose.model('User', userSchema);
+module.exports = User;
