@@ -1,6 +1,0 @@
-{
-  "token": "YOUR_DISCORD_TOKEN",
-  "mongoURI": "YOUR_MONGODB_URI",
-  "port": 3000
-}
-
