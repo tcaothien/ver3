@@ -42,4 +42,3 @@ client.on('messageCreate', (message) => {
     }
   }
 });
-
